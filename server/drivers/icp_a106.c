@@ -534,7 +534,7 @@ icp_a106_get_key(Driver *drvthis)
 				switch (i) {
 				case 0:	// Button 1
 					if (mschange < 300)
-						button = "Enter";
+						button = "Up";
 					else
 						button = "Escape";
 					break;
@@ -542,7 +542,7 @@ icp_a106_get_key(Driver *drvthis)
 					if (mschange < 300)
 						button = "Down";
 					else
-						button = "Up";
+						button = "Enter";
 					break;
 				default:
 					// Don't support other buttons yet.
