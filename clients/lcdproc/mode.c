@@ -122,7 +122,6 @@ credit_screen(int rep, int display, int *flags_ptr)
 		"Andrew McMeikan",
 		"David Glaude",
 		"Todd Porter",
-		"Bjoern Andersson",
 		"Jason Dale Woodward",
 		"Ethan Dicks",
 		"Michael Reinelt",
@@ -175,17 +174,13 @@ credit_screen(int rep, int display, int *flags_ptr)
 		"Christian Leuschen",
 		"Jonathan Kyler",
 		"Sam Bingner",
-		NULL
+		"Francois Mertz"
 	};
-	int contr_num = 0;
+	int contr_num = sizeof(contributors)/sizeof(contributors[0]); /* number of contributors */
 	int i;
 
 	if ((*flags_ptr & INITIALIZED) == 0) {
 		*flags_ptr |= INITIALIZED;
-
-		/* get number of contributors */
-		for (contr_num = 0; contributors[contr_num] != NULL; contr_num++)
-			;	/* NADA */
 
 		sock_send_string(sock, "screen_add A\n");
 		sock_send_string(sock, "screen_set A -name {Credits for LCDproc}\n");
@@ -205,9 +200,9 @@ credit_screen(int rep, int display, int *flags_ptr)
 			    ((lcd_hgt >= 4) ? 8 : 12));
 
 		/* frame contents */
-		for (i = 1; i < contr_num; i++) {
+		for (i = 1; i <= contr_num; i++) {
 			sock_printf(sock, "widget_add A c%i string -in f\n", i);
-			sock_printf(sock, "widget_set A c%i 1 %i {%s}\n", i, i, contributors[i]);
+			sock_printf(sock, "widget_set A c%i 1 %i {%s}\n", i, i, contributors[i - 1]);
 		}
 	}
 

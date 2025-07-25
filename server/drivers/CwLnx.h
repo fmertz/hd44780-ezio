@@ -71,5 +71,18 @@ MODULE_EXPORT int  CwLnx_get_contrast(Driver *drvthis);
 MODULE_EXPORT void CwLnx_set_contrast(Driver *drvthis, int contrast);
 MODULE_EXPORT void CwLnx_backlight(Driver *drvthis, int on);
 
+/* Individual LED Unit installed on LCD panel */
+typedef enum {
+	amber = 0,		/* amber LED */
+	green =1        /* green LED */
+} LEDUnit;
+
+/* LED state supported by LCD panel firmware */
+typedef enum {
+    off = 0,		/* LED off */
+    on = 1,         /* LED on */
+    blinking = 2    /* LED blinking */
+} LEDState;
+
 #endif
 

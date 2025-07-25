@@ -39,7 +39,6 @@ lib_hbar_static (Driver *drvthis, int x, int y, int len, int promille, int optio
 		else if ( pixels > 0 ) {
 			/* write a partial block... */
 			drvthis->chr (drvthis, x+pos, y, pixels + cc_offset);
-			break;
 		}
 		else {
 			; /* write nothing (not even a space) */
